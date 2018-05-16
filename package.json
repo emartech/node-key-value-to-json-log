@@ -8,7 +8,7 @@
   },
   "files": [
     "src/transformer.js",
-    "src/level.json",
+    "src/levels.json",
     "src/cli.js"
   ],
   "scripts": {
