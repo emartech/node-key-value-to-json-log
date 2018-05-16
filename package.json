@@ -1,0 +1,42 @@
+{
+  "name": "key-value-to-json-log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "bin": {
+    "key-value-json": "src/cli.js"
+  },
+  "files": [
+    "src/index.js",
+    "src/cli.js"
+  ],
+  "scripts": {
+    "test": "mocha test/setup-tests.spec.js src --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emartech/node-key-value-to-json-log.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emartech/node-key-value-to-json-log/issues"
+  },
+  "homepage": "https://github.com/emartech/node-key-value-to-json-log#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-sinon": "^2.8.1",
+    "lodash.noop": "^3.0.1",
+    "mocha": "^5.1.1",
+    "moment": "^2.22.1",
+    "moment-timezone": "^0.5.17",
+    "sinon": "^5.0.7",
+    "sinon-chai": "^3.0.0"
+  },
+  "dependencies": {
+    "@emartech/json-logger": "^3.0.1",
+    "logfmt": "^1.2.0",
+    "snakecase-keys": "^1.1.1",
+    "strip-ansi": "^4.0.0"
+  }
+}

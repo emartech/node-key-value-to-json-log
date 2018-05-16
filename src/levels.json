@@ -1,0 +1,5 @@
+{
+  "default": "debug",
+  "success": "info",
+  "error": "error"
+}
