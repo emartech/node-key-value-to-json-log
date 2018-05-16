@@ -7,7 +7,8 @@
     "key-value-json": "src/cli.js"
   },
   "files": [
-    "src/index.js",
+    "src/transformer.js",
+    "src/level.json",
     "src/cli.js"
   ],
   "scripts": {
