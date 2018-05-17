@@ -4,6 +4,7 @@ const jsonLoggerFactory = require('@emartech/json-logger');
 const logFormatter = require('logfmt');
 const snakeCaseKeys = require('snakecase-keys');
 const stripAnsi = require('strip-ansi');
+const omit = require('lodash.omit');
 
 const levels = require('./levels.json');
 
@@ -23,28 +24,26 @@ class KeyValueToJsonLogTransformer {
       jsonLoggerFactory.Logger.config.output(message);
     }
 
-    const logParts = this._getLogParts(message);
+    const { result, eventName, namespace, data } = this._getLogInfo(message);
 
-    if (!logParts.type) {
+    if (!namespace) {
       return;
     }
 
-    const result = logParts.result;
-    delete logParts.result;
 
-    const eventName = logParts.event;
-    delete logParts.event;
-
-    const namespace = logParts.type;
-    delete logParts[namespace];
-    delete logParts.type;
-
-    this._log(namespace, eventName, logParts, result);
+    this._log(namespace, eventName, data, result);
   }
 
-  _getLogParts(message) {
+  _getLogInfo(message) {
     const asciiMessage = stripAnsi(message);
-    return logFormatter.parse(this._trimDatePrefix(asciiMessage).trim());
+    const logParts = logFormatter.parse(this._trimDatePrefix(asciiMessage).trim());
+
+    return {
+      result: logParts.result,
+      eventName: logParts.event,
+      namespace: logParts.type,
+      data: omit(logParts, ['result', 'event', 'type', logParts.type])
+    };
   }
 
   _trimDatePrefix(message) {
@@ -71,7 +70,7 @@ class KeyValueToJsonLogTransformer {
       JSON.parse(message);
       return true;
     }
-    catch(e) {
+    catch (e) {
       return false;
     }
   }
