@@ -1,4 +1,4 @@
-# node-key-value-to-json-log
+# @emartech/key-value-to-json-log
 
 Use with the following command:
 
