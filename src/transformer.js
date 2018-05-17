@@ -60,7 +60,7 @@ class KeyValueToJsonLogTransformer {
 
   _getLogger(namespace) {
     if (!(namespace in this._loggers)) {
-      this._loggers[namespace] = jsonLoggerFactory(namespace);
+      this._loggers[namespace] = new jsonLoggerFactory.Logger(namespace, true);
     }
 
     return this._loggers[namespace];

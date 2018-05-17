@@ -3,7 +3,6 @@
 const Transformer = require('./transformer');
 const jsonLoggerFactory = require('@emartech/json-logger');
 const jsonLogger = jsonLoggerFactory.Logger;
-const noop = require('lodash.noop');
 
 
 describe('KeyValueToJsonLogTransformer', function() {
@@ -23,16 +22,15 @@ describe('KeyValueToJsonLogTransformer', function() {
 
 
   let jsonLoggerFormatter;
+  let jsonLoggerOutput;
 
   const instance = Transformer.create();
 
   beforeEach(function() {
-    this.sandbox.stub(jsonLoggerFactory, 'getNamespaces').returns('test,other-namespace');
     this.clock.setup('2018-05-11 15:00:00');
 
     jsonLoggerFormatter = jsonLogger.config.formatter = this.sandbox.spy();
-
-    jsonLogger.config.output = noop;
+    jsonLoggerOutput = jsonLogger.config.output = this.sandbox.spy();
   });
 
   [
