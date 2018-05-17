@@ -19,6 +19,10 @@ class KeyValueToJsonLogTransformer {
   }
 
   transform(message) {
+    if (this._isItAJSONLogAlready(message)) {
+      jsonLoggerFactory.Logger.config.output(message);
+    }
+
     const logParts = this._getLogParts(message);
 
     if (!logParts.type) {
@@ -60,6 +64,16 @@ class KeyValueToJsonLogTransformer {
     }
 
     return this._loggers[namespace];
+  }
+
+  _isItAJSONLogAlready(message) {
+    try {
+      JSON.parse(message);
+      return true;
+    }
+    catch(e) {
+      return false;
+    }
   }
 
 }
