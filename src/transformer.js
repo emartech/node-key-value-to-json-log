@@ -30,7 +30,7 @@ class KeyValueToJsonLogTransformer {
       return;
     }
 
-    const formattedData = this._convertNumbersInValue(data);
+    const formattedData = this._convertNumbersInValue(this._convertOldException(data));
 
     this._log(namespace, eventName, formattedData, result);
   }
@@ -83,6 +83,21 @@ class KeyValueToJsonLogTransformer {
         data[key] = int;
       }
     });
+    return data;
+  }
+
+  _convertOldException(data) {
+    if (data.message && data.errorMessage && data.code && data.name && data.message === data.errorMessage) {
+      data = Object.assign(
+        {
+          error_name: data.name,
+          error_code: data.code,
+          error_message: data.errorMessage,
+          error_stack: 'stack' in data ? data.stack : ''
+        },
+        omit(data, ['code', 'name', 'message', 'errorMessage', 'stack'])
+      );
+    }
     return data;
   }
 

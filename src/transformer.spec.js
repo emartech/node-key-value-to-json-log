@@ -92,6 +92,21 @@ describe('KeyValueToJsonLogTransformer', function() {
         level: 20,
         time: '2018-05-11T15:00:00.000Z'
       }
+    },
+    {
+      input: 'Wed, 16 May 2018 14:56:23 GMT unified-metrics-request type="unified-metrics-request" event="response-error" result="error" errorMessage="Error in http response (status: 503)" stack="[stack]" message="Error in http response (status: 503)" name="SuiteRequestError" code="503" data="The server was not able to produce a timely response to your request.\r\nPlease try again in a short while!" customer_id="537745392"',
+      expectedJsonLoggerLogArguments: {
+        name: 'unified-metrics-request',
+        action: 'response-error',
+        level: 50,
+        time: '2018-05-11T15:00:00.000Z',
+        error_message: 'Error in http response (status: 503)',
+        error_name: 'SuiteRequestError',
+        error_code: 503,
+        error_stack: '[stack]',
+        data: 'The server was not able to produce a timely response to your request.\r\nPlease try again in a short while!',
+        customer_id: 537745392
+      }
     }
   ].forEach(function(data, index) {
     it(`converts the incoming log level log to proper JSON format #${index} `, function() {
