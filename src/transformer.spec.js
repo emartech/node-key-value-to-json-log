@@ -110,4 +110,17 @@ describe('KeyValueToJsonLogTransformer', function() {
     expect(jsonLoggerOutput).to.have.been.calledWithExactly(logMessage);
   });
 
+  it('converts numbers to int in message', function() {
+    instance.transform('Fri, 11 May 2018 15:00:00 GMT test type="test" event="testEvent" number=10 float=5.5');
+
+    expect(jsonLoggerFormatter).to.have.been.calledWithExactly({
+      name: 'test',
+      action: 'testEvent',
+      level: 20,
+      time: '2018-05-11T15:00:00.000Z',
+      number: 10,
+      float: 5.5
+    });
+  });
+
 });

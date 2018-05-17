@@ -30,8 +30,9 @@ class KeyValueToJsonLogTransformer {
       return;
     }
 
+    const formattedData = this._convertNumbersInValue(data);
 
-    this._log(namespace, eventName, data, result);
+    this._log(namespace, eventName, formattedData, result);
   }
 
   _getLogInfo(message) {
@@ -73,6 +74,16 @@ class KeyValueToJsonLogTransformer {
     catch (e) {
       return false;
     }
+  }
+
+  _convertNumbersInValue(data) {
+    Object.keys(data).map(key => {
+      const int = parseFloat(data[key]);
+      if (!isNaN(int)) {
+        data[key] = int;
+      }
+    });
+    return data;
   }
 
 }
