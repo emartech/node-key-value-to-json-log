@@ -25,19 +25,18 @@
   },
   "homepage": "https://github.com/emartech/node-key-value-to-json-log#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-sinon": "^2.8.1",
-    "lodash.noop": "^3.0.1",
-    "mocha": "^5.1.1",
-    "moment": "^2.22.1",
-    "moment-timezone": "^0.5.17",
-    "sinon": "^5.0.7",
-    "sinon-chai": "^3.0.0"
+    "chai": "4.1.2",
+    "chai-sinon": "2.8.1",
+    "mocha": "5.1.1",
+    "moment": "2.22.1",
+    "moment-timezone": "0.5.17",
+    "sinon": "5.0.7",
+    "sinon-chai": "3.0.0"
   },
   "dependencies": {
-    "@emartech/json-logger": "^3.0.1",
-    "logfmt": "^1.2.0",
-    "snakecase-keys": "^1.1.1",
-    "strip-ansi": "^4.0.0"
+    "@emartech/json-logger": "3.0.1",
+    "logfmt": "1.2.0",
+    "snakecase-keys": "1.1.1",
+    "strip-ansi": "4.0.0"
   }
 }
