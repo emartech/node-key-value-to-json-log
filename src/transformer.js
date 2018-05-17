@@ -40,7 +40,7 @@ class KeyValueToJsonLogTransformer {
   }
 
   _trimDatePrefix(message) {
-    const [, , _message] = /^([A-Za-z]{3}, \d{2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} [A-Z]+\s+)?(.+)$/s.exec(message);
+    const [, , _message] = /^([A-Za-z]{3}, \d{2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} [A-Z]+\s+)?([\s\S]+)$/.exec(message);
     return _message;
   }
 
