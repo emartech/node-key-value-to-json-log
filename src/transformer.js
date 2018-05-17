@@ -21,6 +21,10 @@ class KeyValueToJsonLogTransformer {
   transform(message) {
     const logParts = this._getLogParts(message);
 
+    if (!logParts.type) {
+      return;
+    }
+
     const result = logParts.result;
     delete logParts.result;
 
