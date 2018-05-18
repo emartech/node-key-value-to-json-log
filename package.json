@@ -18,8 +18,8 @@
     "type": "git",
     "url": "git+https://github.com/emartech/node-key-value-to-json-log.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Emarsys Technologies Ltd.",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/emartech/node-key-value-to-json-log/issues"
   },
