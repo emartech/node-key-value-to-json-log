@@ -12,7 +12,7 @@
     "src/cli.js"
   ],
   "scripts": {
-    "test": "mocha test/setup-tests.spec.js src --recursive"
+    "test": "mocha test/setup-tests.spec.js ./src/**/*.spec.js"
   },
   "repository": {
     "type": "git",
