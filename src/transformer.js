@@ -24,7 +24,7 @@ class KeyValueToJsonLogTransformer {
       jsonLoggerFactory.Logger.config.output(message);
     }
 
-    const { result, eventName, namespace, data } = this._getLogInfo(message);
+    const { result, action, namespace, data } = this._getLogInfo(message);
 
     if (!namespace) {
       return;
@@ -32,7 +32,7 @@ class KeyValueToJsonLogTransformer {
 
     const formattedData = this._convertNumbersInValue(this._convertOldException(data));
 
-    this._log(namespace, eventName, formattedData, result);
+    this._log(namespace, action, formattedData, result);
   }
 
   _getLogInfo(message) {
@@ -41,7 +41,7 @@ class KeyValueToJsonLogTransformer {
 
     return {
       result: logParts.result,
-      eventName: logParts.event,
+      action: logParts.event,
       namespace: logParts.type,
       data: omit(logParts, ['result', 'event', 'type', logParts.type])
     };
