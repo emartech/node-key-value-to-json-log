@@ -119,7 +119,7 @@ describe('KeyValueToJsonLogTransformer', function() {
   it('just send to output if JSON message is received', function() {
     const logMessage = JSON.stringify({ this: 'is', valid: 'JSON' });
 
-    instance.transform(logMessage);
+    instance.transform(logMessage + "\n");
 
     expect(jsonLoggerFormatter).to.not.have.been.called;
     expect(jsonLoggerOutput).to.have.been.calledWithExactly(logMessage);

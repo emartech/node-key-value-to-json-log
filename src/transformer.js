@@ -21,7 +21,7 @@ class KeyValueToJsonLogTransformer {
 
   transform(message) {
     if (this._isItAJSONLogAlready(message)) {
-      jsonLoggerFactory.Logger.config.output(message);
+      jsonLoggerFactory.Logger.config.output(message.trim());
     }
 
     const { result, action, namespace, data } = this._getLogInfo(message);
