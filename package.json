@@ -36,7 +36,7 @@
   "dependencies": {
     "@emartech/json-logger": "3.0.1",
     "lodash.omit": "4.5.0",
-    "logfmt": "1.2.0",
+    "logfmt": "1.2.1",
     "snakecase-keys": "1.1.1",
     "strip-ansi": "4.0.0"
   }
