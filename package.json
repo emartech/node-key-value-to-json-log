@@ -27,14 +27,14 @@
   "devDependencies": {
     "chai": "4.1.2",
     "chai-sinon": "2.8.1",
-    "mocha": "5.1.1",
+    "mocha": "5.2.0",
     "moment": "2.22.1",
     "moment-timezone": "0.5.17",
-    "sinon": "5.0.7",
-    "sinon-chai": "3.0.0"
+    "sinon": "5.0.10",
+    "sinon-chai": "3.1.0"
   },
   "dependencies": {
-    "@emartech/json-logger": "3.0.1",
+    "@emartech/json-logger": "3.0.2",
     "lodash.omit": "4.5.0",
     "logfmt": "1.2.1",
     "snakecase-keys": "1.1.1",
