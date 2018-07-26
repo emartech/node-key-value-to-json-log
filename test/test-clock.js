@@ -1,8 +1,7 @@
 'use strict';
 
-let moment = require('moment');
-let sinon = require('sinon');
-require('moment-timezone');
+const moment = require('moment-timezone');
+const sinon = require('sinon');
 
 class TestClock {
 
