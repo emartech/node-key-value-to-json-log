@@ -125,6 +125,20 @@ describe('KeyValueToJsonLogTransformer', function() {
     expect(jsonLoggerOutput).to.have.been.calledWithExactly(logMessage);
   });
 
+  it('just send to output if KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM env var is present', function() {
+    const oldValue = process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM;
+    process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM = 1;
+
+    const logMessage = 'this should be the output';
+
+    instance.transform(logMessage + "\n");
+
+    expect(jsonLoggerFormatter).to.not.have.been.called;
+    expect(jsonLoggerOutput).to.have.been.calledWithExactly('this should be the output');
+
+    process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM = oldValue;
+  });
+
   it('converts numbers to int in message', function() {
     instance.transform('Fri, 11 May 2018 15:00:00 GMT test type="test" event="testEvent" number=10 float=5.5');
 

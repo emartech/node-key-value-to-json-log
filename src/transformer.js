@@ -20,7 +20,7 @@ class KeyValueToJsonLogTransformer {
   }
 
   transform(message) {
-    if (this._isItAJSONLogAlready(message)) {
+    if (this._isItAJSONLogAlready(message) || 'KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM' in process.env) {
       jsonLoggerFactory.Logger.config.output(message.trim());
     }
 
