@@ -2,12 +2,9 @@
 
 "use strict";
 
-const { Transform } = require('stream');
 const logTransformer = require('./transformer').create();
+const transformStreamFactory = require('./transform-stream-factory');
 
-process.stdin.pipe(new Transform({
-  transform(chunk, _encoding, callback) {
-    logTransformer.transform(chunk.toString());
-    callback();
-  }
-}));
+const transformStream = transformStreamFactory(logTransformer.transform);
+
+process.stdin.pipe(transformStream);

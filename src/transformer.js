@@ -9,7 +9,7 @@ const omit = require('lodash.omit');
 const levels = require('./levels.json');
 
 
-class KeyValueToJsonLogTransformer {
+class Transformer {
 
   static create() {
     return new this;
@@ -22,6 +22,7 @@ class KeyValueToJsonLogTransformer {
   transform(message) {
     if (this._isItAJSONLogAlready(message) || 'KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM' in process.env) {
       jsonLoggerFactory.Logger.config.output(message.trim());
+      return;
     }
 
     const { result, action, namespace, data } = this._getLogInfo(message);
@@ -103,4 +104,4 @@ class KeyValueToJsonLogTransformer {
 
 }
 
-module.exports = KeyValueToJsonLogTransformer;
+module.exports = Transformer;

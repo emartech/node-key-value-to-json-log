@@ -1,11 +1,11 @@
 'use strict';
 
-const Transformer = require('./transformer');
 const jsonLoggerFactory = require('@emartech/json-logger');
+const Transformer = require('./transformer');
+
 const jsonLogger = jsonLoggerFactory.Logger;
 
-
-describe('KeyValueToJsonLogTransformer', function() {
+describe('Transformer', function() {
 
   let oldJsonLoggerOutput;
   let oldJsonLoggerFormatter;
@@ -126,7 +126,6 @@ describe('KeyValueToJsonLogTransformer', function() {
   });
 
   it('just send to output if KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM env var is present', function() {
-    const oldValue = process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM;
     process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM = 1;
 
     const logMessage = 'this should be the output';
@@ -136,7 +135,7 @@ describe('KeyValueToJsonLogTransformer', function() {
     expect(jsonLoggerFormatter).to.not.have.been.called;
     expect(jsonLoggerOutput).to.have.been.calledWithExactly('this should be the output');
 
-    process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM = oldValue;
+    delete process.env.KEY_VALUE_TO_JSON_LOG_SKIP_TRANSFORM;
   });
 
   it('converts numbers to int in message', function() {
