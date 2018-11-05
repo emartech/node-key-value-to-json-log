@@ -7,6 +7,7 @@
     "key-value-to-json-log": "./src/cli.js"
   },
   "files": [
+    "src/transform-stream-factory.js",
     "src/transformer.js",
     "src/levels.json",
     "src/cli.js"
